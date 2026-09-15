@@ -1,0 +1,61 @@
+Bài 1
+  1. GitHub REST API
+  - Loại API: REST
+  - Base URL: https://api.github.com
+  - Auth Method: Personal Access Token / OAuth 2.0 
+    (Truyền qua Header: Authorization: Bearer <token> hoặc token <token>)
+  - Versioning: Có. Sử dụng Custom Header để chỉ định phiên bản 
+  - Resource Identifier: Số (Integer) cho ID nội bộ (Ví dụ: User ID, Repo ID) 
+    hoặc Chuỗi Name/Slug (Ví dụ: /users/{username} hoặc /repos/{owner}/{repo})
+
+  2. Spotify Web API
+  - Loại API: REST
+  - Base URL: https://api.spotify.com/v1
+  - Auth Method: OAuth 2.0 
+    (Truyền Access Token qua Header: Authorization: Bearer <your_access_token>)
+  - Versioning: Có (Đánh số phiên bản trực tiếp trên Path URL: '/v1')
+  - Resource Identifier: Base62 String (Chuỗi 22 ký tự kết hợp chữ và số, 
+    ví dụ Track ID: '4cOdK2wGLETKBW3PvgPWqT'. Không phải dạng Số tăng dần hay chuẩn UUID)
+
+  3. OpenWeather API
+  - Loại API: REST
+  - Base URL: https://api.openweathermap.org/data/2.5
+  - Auth Method: API Key / APPID 
+    (Truyền qua Query Parameter: ?appid={API_KEY})
+  - Versioning: Có (Đánh số phiên bản trực tiếp trên Path URL: '/2.5' hoặc '/3.0')
+  - Resource Identifier: Số (Integer) cho City ID (Ví dụ: ID 1581130 đại diện cho Hà Nội)
+    hoặc Tọa độ địa lý (Pair of float: lat, lon)
+Bài 2
+  ở Slide 05:
+  (1) Có hợp đồng rõ ràng (Contract-first)
+  (2) Ẩn cài đặt (Abstraction)
+  (3) Có thể tái sử dụng (Reusability)
+  (4) Độc lập với ngôn ngữ & nền tảng (Language-agnostic)
+  (5) Có thể versioning & quan sát được (Versioned & Observable)
+
+Các điểm Geewax và Higginbotham bổ sung thêm:
+
+1. Chuyển góc nhìn sang Trải nghiệm Lập trình viên (Developer Experience - DX):
+   - Slide 05 tập trung vào góc nhìn Kỹ thuật & Kiến trúc hệ thống (giao thức, 
+     abstraction, platform independence).
+   - Geewax & Higginbotham bổ sung góchư một sản phẩm" (API as a 
+     Product). Một API tốt phải chú trọng vào DX: dễ hiểu, dễ s nhìn "API nử dụng, cấu trúc 
+     mạch lạc và thông báo lỗi mang tính hướng dẫn sửa chữa.
+
+2. Nguyên tắc "Khó sử dụng sai" (Hard to misuse):
+   - Slide 05 chỉ dừng lại ở việc có "Hợp đồng rõ ràng" (Contract-first).
+   - Geewax nhấn mạnh rằng hợp đồng rõ ràng là chưa đủ, thiết kế API phải làm 
+     sao để ngăn chặn lập trình viên mắc lỗi ngay từ đầu (ví dụ: đặt tên không 
+     gây hiểu lầm, ép kiểu dữ liệu strict, validate chặt).
+
+3. Tính tiến hóa linh hoạt (Evolvability vs. Versioning):
+   - Slide 05 nhấn mạnh vào việc phải đánh số phiên bản (v1, v2) khi nâng cấp.
+   - Higginbotham bổ sung rằng tăng version v1 -> v2 gây tốn kém chi phí bảo trì. 
+     Do đó, ưu tiên hàng đầu là thiết kế API có "Tính tiến hóa" (Evolvability) - 
+     tức là mở rộng tính năng mới theo cách tương thích ngược mà không cần phải 
+     tăng version (non-breaking changes).
+
+4. Quản lý lỗi và Tối ưu hiệu năng:
+   - Geewax & Higginbotham bổ sung thêm các tiêu chí về xử lý lỗi (Error 
+     handling) rõ ràng và hiệu năng thực tế (Performance, Pagination) - những 
+     yếu tố chưa được nhắc tới chi tiết trong Slide 05.
